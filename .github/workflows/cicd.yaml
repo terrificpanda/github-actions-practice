@@ -1,0 +1,35 @@
+# Workflow
+# Should have Name
+name: CICD
+
+# On tells when the workflow should run
+on:
+  workflow_dispatch: 
+# Jobs
+# Should be inside the Workflow
+
+jobs:
+  # 1st Job
+  Code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the code
+        run: echo "Cloning code"
+  Build:
+    needs: Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building using Docker
+        run: echo "Building artifact"
+  Test:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing
+        run: echo "Tests the app"
+  Deploy:
+    needs: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying
+        run: echo "Deploying the app"
