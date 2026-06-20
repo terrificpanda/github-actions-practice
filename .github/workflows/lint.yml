@@ -12,3 +12,5 @@ jobs:
         uses: actions/checkout@v7
       - name: Install Linter
         run: pip install ruff
+      - name: Checking linter
+        run: ruff check .
